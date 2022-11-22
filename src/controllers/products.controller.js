@@ -14,6 +14,16 @@ export async function postProduct(req, res) {
   }
 }
 
+export async function getProducts(req, res) {
+    try {
+      const userProducts = await productsCollection.find().toArray();
+      res.status(200).send(userProducts);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+  }
+
 export async function getUserProducts(req, res) {
   const userId = req.params.userId;
   try {
