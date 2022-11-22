@@ -15,6 +15,7 @@ export async function authMiddleware(req, res, next) {
     if (!user) {
       return res.sendStatus(401);
     }
+    delete user.password;
     req.user = user;
     next();
   } catch (err) {
