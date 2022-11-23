@@ -27,9 +27,7 @@ export async function getProducts(req, res) {
 export async function getProduct(req, res) {
   const id = req.params.id;
 
-  const checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
-
-  if (!checkForHexRegExp.test(id)) {
+  if (!ObjectId.isValid(id)) {
     return res.sendStatus(409);
   }
   try {
